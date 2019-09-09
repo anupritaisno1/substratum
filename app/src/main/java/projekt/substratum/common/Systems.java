@@ -285,7 +285,7 @@ public class Systems {
      * @return True, if using Andromeda
      */
     public static boolean isAndromedaDevice(Context context) {
-        return checkThemeSystemModule(context) == OVERLAY_MANAGER_SERVICE_ANDROMEDA;
+        return false/*checkThemeSystemModule(context) == OVERLAY_MANAGER_SERVICE_ANDROMEDA*/;
     }
 
     private static boolean isAndromeda(Context context) {
@@ -348,8 +348,8 @@ public class Systems {
      * @return True, if the device can utilize both sungstratum + andromeda mode on Oreo onwards
      */
     public static boolean isNewSamsungDeviceAndromeda(Context context) {
-        boolean sungstromeda = prefs.getBoolean("sungstromeda_mode", true);
-        return sungstromeda && isNewSamsungDevice() && isAndromedaDevice(context);
+        /* boolean sungstromeda = prefs.getBoolean("sungstromeda_mode", true);
+        */ return false /*sungstromeda && isNewSamsungDevice() && isAndromedaDevice(context)*/;
     }
 
     /**
@@ -368,10 +368,10 @@ public class Systems {
      * @return True, if it is enabled and installed
      */
     private static PackageInfo getAndromedaPackage(Context context) {
-        try {
+        /* try {
             return context.getPackageManager().getPackageInfo(ANDROMEDA_PACKAGE, 0);
         } catch (Exception ignored) {
-        }
+        } */
         return null;
     }
 
@@ -484,8 +484,8 @@ public class Systems {
      */
     @SuppressLint("HardwareIds")
     public static String getDeviceID(Context context) {
-        return Settings.Secure.getString(context.getContentResolver(),
-                Settings.Secure.ANDROID_ID);
+        return "0"; /*Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);*/
     }
 
     /**
@@ -528,7 +528,7 @@ public class Systems {
      * @return True if blacklisted packages found
      */
     public static boolean checkPackageSupport(Context context, Boolean override) {
-        if (checkPackageSupported == null || override) {
+        /*if (checkPackageSupported == null || override) {
             String[] blacklistedPackages = {
                     "com.android.vending.billing.InAppBillingService.",
                     "uret.jasi2169.",
@@ -538,8 +538,8 @@ public class Systems {
                     "zone.jasi2169."
             };
             checkPackageSupported = checkPackageRegex(context, blacklistedPackages) || hashPassthrough(context) == 0;
-        }
-        return checkPackageSupported;
+        }*/
+        return false/*checkPackageSupported*/;
     }
 
     /**
@@ -551,7 +551,7 @@ public class Systems {
      */
     private static Boolean checkPackageRegex(Context context,
                                              String[] stringArray) {
-        if (stringArray.length == 0) return true;
+/*        if (stringArray.length == 0) return true;
         final PackageManager pm = context.getPackageManager();
         List<ApplicationInfo> packages = pm.getInstalledApplications(PackageManager.GET_META_DATA);
         List<String> listOfInstalled = new ArrayList<>();
@@ -562,7 +562,7 @@ public class Systems {
         for (String packageName : stringArray) {
             if (invocation.contains(packageName))
                 return true;
-        }
+        }*/
         return false;
     }
 
@@ -578,7 +578,7 @@ public class Systems {
             Context context,
             String url,
             String fileName) {
-        String supportedRom = "";
+        /* String supportedRom = "";
         try {
             if (isNetworkAvailable(context)) {
                 FileDownloader.init(context, url, "", fileName);
@@ -590,7 +590,7 @@ public class Systems {
 
             Map<String, String> listOfRoms =
                     ReadSupportedROMsFile.read(context.getCacheDir() + "/" + fileName);
-            boolean supported = false;
+           */ boolean supported = true; /*
 
             // First check if it is a valid prop
             for (Object o : listOfRoms.entrySet()) {
@@ -663,8 +663,8 @@ public class Systems {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        return supportedRom;
+        }*/
+        return "";
     }
 
     /**

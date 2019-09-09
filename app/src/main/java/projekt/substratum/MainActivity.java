@@ -1078,7 +1078,7 @@ public class MainActivity extends AppCompatActivity implements
                         Button andromedaOfflineButton = activity.progressDialog.findViewById(R.id.andromeda_offline_button);
                         TextView andromedaDebugText = activity.progressDialog.findViewById(R.id.andromeda_debug_text);
                         andromedaTitle.setVisibility(View.VISIBLE);
-                        if (!isAndromedaDevice(context)) {
+                        if (false) {
                             andromedaTitle.setText(R.string.andromeda_no_firebase);
                             appCloseButton.setVisibility(View.VISIBLE);
                         } else {
